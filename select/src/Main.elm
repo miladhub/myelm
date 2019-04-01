@@ -3,7 +3,7 @@ module Main exposing (Color(..), Model, Msg(..), init, main, update, view)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick, onInput)
+import Html.Events exposing (onInput)
 
 
 main =
@@ -35,13 +35,13 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         Choose "red" ->
-            { model | result = "red!", color = Red }
+            { result = "red!", color = Red }
 
         Choose "blue" ->
-            { model | result = "blue!", color = Blue }
+            { result = "blue!", color = Blue }
 
         Choose _ ->
-            { model | result = "Error", color = Black }
+            { result = "Error", color = Black }
 
 
 view : Model -> Html Msg

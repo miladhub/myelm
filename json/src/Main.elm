@@ -8,10 +8,6 @@ import Http
 import Json.Decode exposing (Decoder, field, string)
 
 
-
--- MAIN
-
-
 main =
     Browser.element
         { init = init
@@ -19,10 +15,6 @@ main =
         , subscriptions = subscriptions
         , view = view
         }
-
-
-
--- MODEL
 
 
 type Model
@@ -34,10 +26,6 @@ type Model
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( Loading, getRandomCatGif )
-
-
-
--- UPDATE
 
 
 type Msg
@@ -60,17 +48,9 @@ update msg model =
                     ( Failure, Cmd.none )
 
 
-
--- SUBSCRIPTIONS
-
-
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.none
-
-
-
--- VIEW
 
 
 view : Model -> Html Msg
@@ -98,10 +78,6 @@ viewGif model =
                 [ button [ onClick MorePlease, style "display" "block" ] [ text "More Please!" ]
                 , img [ src url ] []
                 ]
-
-
-
--- HTTP
 
 
 getRandomCatGif : Cmd Msg

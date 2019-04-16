@@ -31,7 +31,7 @@ init _ =
 
 type Msg
     = Roll
-    | NewFace Int Int
+    | NewFace Model
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -42,20 +42,20 @@ update msg model =
             , generateFace
             )
 
-        NewFace f1 f2 ->
-            ( Model f1 f2
+        NewFace m ->
+            ( m
             , Cmd.none
             )
 
 
 generateFace : Cmd Msg
 generateFace =
-    Random.generate (\f -> f) facesGenerator
+    Random.generate NewFace facesGenerator
 
 
-facesGenerator : Random.Generator Msg
+facesGenerator : Random.Generator Model
 facesGenerator =
-    Random.map2 NewFace (Random.int 1 6) (Random.int 1 6)
+    Random.map2 Model (Random.int 1 6) (Random.int 1 6)
 
 
 subscriptions : Model -> Sub Msg
